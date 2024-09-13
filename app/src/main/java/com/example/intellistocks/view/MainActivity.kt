@@ -19,5 +19,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(i)
         }
 
+        binding.btnCadastrarProduto.setOnClickListener {
+            val i = Intent(this, CadastrarProdutoActivity::class.java)
+            startActivity(i)
+        }
+
+        binding.btnVisualizarProdutos.setOnClickListener {
+            val i = Intent(this, ProdutosActivity::class.java)
+            startActivity(i)
+        }
+
     }
 }

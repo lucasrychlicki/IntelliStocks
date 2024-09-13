@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:background="@color/backgroundColor"
-    tools:context=".view.CadastrarProdutosActivity">
+    tools:context=".view.CadastrarProdutoActivity">
 
     <EditText
         android:id="@+id/editNomeProduto"

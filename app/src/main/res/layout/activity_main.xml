@@ -21,7 +21,7 @@
         android:backgroundTint="@color/fabColor" />
 
     <Button
-        android:id="@+id/btnRegisterProduct"
+        android:id="@+id/btnCadastrarProduto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Cadastrar Produto"
@@ -35,13 +35,13 @@
         android:layout_marginTop="250dp"/>
 
     <Button
-        android:id="@+id/btnViewProducts"
+        android:id="@+id/btnVisualizarProdutos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Visualizar Produtos"
         android:textColor="@color/buttonTextColor"
         android:backgroundTint="@color/primaryColor"
-        app:layout_constraintTop_toBottomOf="@id/btnRegisterProduct"
+        app:layout_constraintTop_toBottomOf="@id/btnCadastrarProduto"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="32dp"
