@@ -6,21 +6,26 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.intellistocks.databinding.ActivityLoginBinding
 import com.example.intellistocks.viewmodel.LoginViewModel
-import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
+
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
-    private val viewModel: LoginViewModel by viewModels()
+    private lateinit var viewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))
+            .get(LoginViewModel::class.java)
+
         binding.btnLogin.setOnClickListener {
             val emailOuNome = binding.editEmailOuNome.text.toString()
             val senha = binding.editSenha.text.toString()
+            val i = Intent(this, MainActivity::class.java)
 
             if(viewModel.login(emailOuNome, senha)) {
                 Toast.makeText(
@@ -28,6 +33,8 @@ class LoginActivity : AppCompatActivity() {
                     "Login efetuado com sucesso!",
                     Toast.LENGTH_SHORT
                 ).show()
+                startActivity(i)
+                finish()
             }else{
                 Toast.makeText(
                     this,

@@ -14,10 +14,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnLogin.setOnClickListener {
-            val i = Intent(this, LoginActivity::class.java)
+        binding.fabPerfil.setOnClickListener {
+            val i = Intent(this, PerfilActivity::class.java)
             startActivity(i)
-            finish()
         }
 
     }

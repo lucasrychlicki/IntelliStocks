@@ -5,17 +5,46 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     tools:context=".view.MainActivity">
 
-    <Button
-        android:id="@+id/btnLogin"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:contentDescription="Perfil"
+        app:srcCompat="@drawable/ic_profile_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="16dp"
+        android:tint="@color/white"
+        android:backgroundTint="@color/fabColor" />
+
+    <Button
+        android:id="@+id/btnRegisterProduct"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Cadastrar Produto"
+        android:textColor="@color/buttonTextColor"
+        android:backgroundTint="@color/primaryColor"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="250dp"/>
+
+    <Button
+        android:id="@+id/btnViewProducts"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Visualizar Produtos"
+        android:textColor="@color/buttonTextColor"
+        android:backgroundTint="@color/primaryColor"
+        app:layout_constraintTop_toBottomOf="@id/btnRegisterProduct"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginVertical="16dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
