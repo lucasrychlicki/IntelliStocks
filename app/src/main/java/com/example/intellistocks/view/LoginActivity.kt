@@ -19,7 +19,10 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))
+        viewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.AndroidViewModelFactory.getInstance(application)
+        )
             .get(LoginViewModel::class.java)
 
         binding.btnLogin.setOnClickListener {
@@ -27,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
             val senha = binding.editSenha.text.toString()
             val i = Intent(this, MainActivity::class.java)
 
-            if(viewModel.login(emailOuNome, senha)) {
+            if (viewModel.login(emailOuNome, senha)) {
                 Toast.makeText(
                     this,
                     "Login efetuado com sucesso!",
@@ -35,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
                 ).show()
                 startActivity(i)
                 finish()
-            }else{
+            } else {
                 Toast.makeText(
                     this,
                     "Falha no login. Verifique suas credenciais!",
@@ -49,8 +52,6 @@ class LoginActivity : AppCompatActivity() {
             startActivity(i)
             finish()
         }
-
-
 
     }
 }

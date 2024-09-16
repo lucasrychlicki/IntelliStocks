@@ -41,10 +41,6 @@ class CadastrarProdutoActivity : AppCompatActivity() {
             binding.btnSalvarProduto.text = "Atualizar Produto"
         }
 
-        /*binding.btnSalvarProduto.setOnClickListener {
-            salvarProduto()
-        }*/
-
         binding.btnSalvarProduto.setOnClickListener {
             val nome = binding.editNomeProduto.text.toString()
             val quantidade = binding.editQuantidadeProduto.text.toString().toIntOrNull() ?: 0
@@ -70,13 +66,13 @@ class CadastrarProdutoActivity : AppCompatActivity() {
             finish()
         }
 
-
-
     }
 
     private fun carregarDadosDoProduto() {
         binding.editNomeProduto.setText(intent.getStringExtra("produto_nome"))
-        binding.editQuantidadeProduto.setText(intent.getIntExtra("produto_quantidade", 0).toString())
+        binding.editQuantidadeProduto.setText(
+            intent.getIntExtra("produto_quantidade", 0).toString()
+        )
         binding.editPrecoProduto.setText(intent.getDoubleExtra("produto_preco", 0.0).toString())
     }
 
@@ -94,7 +90,6 @@ class CadastrarProdutoActivity : AppCompatActivity() {
             Toast.makeText(this, "Preencha todos os campos corretamente", Toast.LENGTH_SHORT).show()
         }
     }
-
 
     private fun limparCampos() {
         binding.editNomeProduto.text?.clear()

@@ -39,14 +39,12 @@ class ProdutosActivity : AppCompatActivity() {
             onDeleteClick = { produto -> deletarProduto(produto.id) }
         )
 
-        // Configurar RecyclerView
         binding.rvProdutos.apply {
             layoutManager = LinearLayoutManager(this@ProdutosActivity)
             adapter = produtoAdapter
         }
 
 
-        // Observar os produtos e atualizar a lista no adapter
         produtoViewModel.produtos.observe(this) { produtos ->
             Log.d("ProdutosActivity", "Produtos atualizados: ${produtos.size}")
             produtoAdapter.updateProdutos(produtos)

@@ -25,7 +25,6 @@ class PerfilViewModel(application: Application) : AndroidViewModel(application) 
         carregarInfoUsuario()
     }
 
-    // Método para salvar as informações do usuário no cadastro
     private fun salvarInfoUsuario(nome: String, email: String, telefone: String) {
         val editor = sharedPreferences.edit()
         editor.putString("nome", nome)
@@ -35,7 +34,6 @@ class PerfilViewModel(application: Application) : AndroidViewModel(application) 
 
     }
 
-    // Método para carregar as informações do usuário
     private fun carregarInfoUsuario() {
         _usuarioNome.value = sharedPreferences.getString("nome", "N/A")
         _usuarioEmail.value = sharedPreferences.getString("email", "N/A")

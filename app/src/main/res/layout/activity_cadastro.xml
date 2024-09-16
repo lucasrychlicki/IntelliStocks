@@ -76,6 +76,43 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
 
+    <EditText
+        android:id="@+id/editCepCadastro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="CEP"
+        android:inputType="number"
+        android:background="@drawable/edit_text_background"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/editSenhaCadastro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/editLogradouroCadastro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Logradouro"
+        android:background="@drawable/edit_text_background"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/editCepCadastro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/editEstadoCadastro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Estado"
+        android:background="@drawable/edit_text_background"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/editLogradouroCadastro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
     <!-- Botão de Cadastro -->
     <Button
         android:id="@+id/btnCadastrar"
@@ -84,9 +121,11 @@
         android:text="Cadastrar"
         android:backgroundTint="@color/primaryColor"
         android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/editSenhaCadastro"
+        app:layout_constraintTop_toBottomOf="@id/editEstadoCadastro"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="32dp" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

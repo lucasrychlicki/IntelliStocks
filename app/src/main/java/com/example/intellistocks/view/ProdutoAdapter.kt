@@ -13,8 +13,9 @@ class ProdutoAdapter(
 
     private val produtos: MutableList<Produto> = mutableListOf()
 
-    // ViewHolder
-    inner class ProdutoViewHolder(private val binding: ItemProdutosBinding) : RecyclerView.ViewHolder(binding.root) {
+
+    inner class ProdutoViewHolder(private val binding: ItemProdutosBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(produto: Produto) {
             binding.textNomeProduto.text = produto.nome
             binding.textQuantidade.text = produto.quantidade.toString()
@@ -34,7 +35,8 @@ class ProdutoAdapter(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProdutoViewHolder {
-        val binding = ItemProdutosBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemProdutosBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ProdutoViewHolder(binding)
     }
 
