@@ -11,7 +11,7 @@
         android:id="@+id/editProcurarProduto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Search products..."
+        android:hint="Digite o produto"
         android:padding="12dp"
         android:background="@drawable/search_background"
         android:drawableStart="@drawable/ic_search_24"

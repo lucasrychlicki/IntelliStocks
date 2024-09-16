@@ -7,12 +7,14 @@ import com.example.intellistocks.databinding.ItemProdutosBinding
 import com.example.intellistocks.model.Produto
 
 class ProdutoAdapter(
-    private val produtos: List<Produto>,
     private val onEditClick: (Produto) -> Unit,
     private val onDeleteClick: (Produto) -> Unit
-) : RecyclerView.Adapter<ProdutoAdapter.ProdutoViewHolder>(){
+) : RecyclerView.Adapter<ProdutoAdapter.ProdutoViewHolder>() {
 
-    inner class ProdutoViewHolder(val binding: ItemProdutosBinding) : RecyclerView.ViewHolder(binding.root) {
+    private val produtos: MutableList<Produto> = mutableListOf()
+
+    // ViewHolder
+    inner class ProdutoViewHolder(private val binding: ItemProdutosBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(produto: Produto) {
             binding.textNomeProduto.text = produto.nome
             binding.textQuantidade.text = produto.quantidade.toString()
@@ -23,6 +25,14 @@ class ProdutoAdapter(
         }
     }
 
+    // Método para atualizar a lista de produtos no adapter
+    fun updateProdutos(novosProdutos: List<Produto>) {
+        produtos.clear()
+        produtos.addAll(novosProdutos)
+        notifyDataSetChanged()
+    }
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProdutoViewHolder {
         val binding = ItemProdutosBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ProdutoViewHolder(binding)
@@ -30,10 +40,7 @@ class ProdutoAdapter(
 
     override fun getItemCount(): Int = produtos.size
 
-
     override fun onBindViewHolder(holder: ProdutoViewHolder, position: Int) {
         holder.bind(produtos[position])
     }
-
-
 }

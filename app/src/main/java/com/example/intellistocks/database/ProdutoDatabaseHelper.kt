@@ -25,7 +25,7 @@ class ProdutoDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
                 $COLUMN_QUANTIDADE INTEGER,
                 $COLUMN_PRECO REAL
             )
-        """
+        """.trimIndent()
         db?.execSQL(createTable)
     }
 

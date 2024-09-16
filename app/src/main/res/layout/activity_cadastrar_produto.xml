@@ -25,7 +25,7 @@
         android:id="@+id/editQuantidadeProduto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Quantide"
+        android:hint="Quantidade"
         android:inputType="number"
         android:layout_marginTop="16dp"
         android:background="@drawable/edit_text_background"

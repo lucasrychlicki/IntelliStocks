@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.util.Log
 import com.example.intellistocks.database.ProdutoDatabaseHelper
 
 class ProdutoRepository(context: Context) {
@@ -16,13 +17,10 @@ class ProdutoRepository(context: Context) {
             put(ProdutoDatabaseHelper.COLUMN_QUANTIDADE, produto.quantidade)
             put(ProdutoDatabaseHelper.COLUMN_PRECO, produto.preco)
         }
-        return db.insert(
-            ProdutoDatabaseHelper.TABLE_NAME,
-            null,
-            values
-        )
+        return db.insert(ProdutoDatabaseHelper.TABLE_NAME, null, values)
     }
 
+    // Atualizar um produto existente
     fun updateProduto(produto: Produto): Int {
         val values = ContentValues().apply {
             put(ProdutoDatabaseHelper.COLUMN_NOME, produto.nome)
@@ -37,6 +35,7 @@ class ProdutoRepository(context: Context) {
         )
     }
 
+    // Deletar um produto
     fun deleteProduto(produtoId: Int): Int {
         return db.delete(
             ProdutoDatabaseHelper.TABLE_NAME,
@@ -45,6 +44,7 @@ class ProdutoRepository(context: Context) {
         )
     }
 
+    // Retornar todos os produtos
     fun getAllProdutos(): List<Produto> {
         val produtos = mutableListOf<Produto>()
         val cursor: Cursor = db.query(
@@ -52,7 +52,7 @@ class ProdutoRepository(context: Context) {
             null, null, null, null, null, null
         )
 
-        if (cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             do {
                 val id = cursor.getInt(cursor.getColumnIndexOrThrow(ProdutoDatabaseHelper.COLUMN_ID))
                 val nome = cursor.getString(cursor.getColumnIndexOrThrow(ProdutoDatabaseHelper.COLUMN_NOME))

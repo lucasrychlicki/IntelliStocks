@@ -24,6 +24,7 @@ class CadastrarProdutoActivity : AppCompatActivity() {
         ProdutoViewModelFactory(ProdutoRepository(this))
     }
 
+    private var produtoExistente: Produto? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,42 +32,69 @@ class CadastrarProdutoActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+        produtoExistente = intent.getParcelableExtra("produto")
+        produtoExistente?.let {
+            binding.editNomeProduto.setText(it.nome)
+            binding.editQuantidadeProduto.setText(it.quantidade.toString())
+            binding.editPrecoProduto.setText(it.preco.toString())
+
+            binding.btnSalvarProduto.text = "Atualizar Produto"
+        }
+
+        /*binding.btnSalvarProduto.setOnClickListener {
+            salvarProduto()
+        }*/
+
         binding.btnSalvarProduto.setOnClickListener {
-            cadastrarProduto()
+            val nome = binding.editNomeProduto.text.toString()
+            val quantidade = binding.editQuantidadeProduto.text.toString().toIntOrNull() ?: 0
+            val preco = binding.editPrecoProduto.text.toString().toDoubleOrNull() ?: 0.0
 
+
+            if (produtoExistente != null) {
+                val i = Intent(this, MainActivity::class.java)
+                val produtoAtualizado = produtoExistente!!.copy(
+                    nome = nome,
+                    quantidade = quantidade,
+                    preco = preco
+                )
+                produtoViewModel.atualizarProduto(produtoAtualizado)
+                startActivity(i)
+                Toast.makeText(this, "Produto atualizado com sucesso!", Toast.LENGTH_SHORT).show()
+            } else {
+                val novoProduto = Produto(0, nome, quantidade, preco)
+                produtoViewModel.cadastrarProduto(novoProduto)
+                Toast.makeText(this, "Produto cadastrado com sucesso!", Toast.LENGTH_SHORT).show()
+            }
+
+            finish()
         }
+
 
 
     }
 
-    private fun cadastrarProduto() {
+    private fun carregarDadosDoProduto() {
+        binding.editNomeProduto.setText(intent.getStringExtra("produto_nome"))
+        binding.editQuantidadeProduto.setText(intent.getIntExtra("produto_quantidade", 0).toString())
+        binding.editPrecoProduto.setText(intent.getDoubleExtra("produto_preco", 0.0).toString())
+    }
 
-        val i = Intent(this, ProdutosActivity::class.java)
-        val nomeProduto = binding.editNomeProduto.text.toString()
-        val quantidadeProduto = binding.editQuantidadeProduto.text.toString().toIntOrNull()
-        val precoProduto = binding.editPrecoProduto.text.toString().toDoubleOrNull()
+    private fun salvarProduto() {
+        val nome = binding.editNomeProduto.text.toString().trim()
+        val quantidade = binding.editQuantidadeProduto.text.toString().toIntOrNull() ?: 0
+        val preco = binding.editPrecoProduto.text.toString().toDoubleOrNull() ?: 0.0
 
-        if (nomeProduto.isBlank() || quantidadeProduto == null || precoProduto == null) {
+        if (nome.isNotEmpty() && quantidade > 0 && preco > 0) {
+            val produto = Produto(0, nome, quantidade, preco)
+            produtoViewModel.cadastrarProduto(produto)
+            Toast.makeText(this, "Produto cadastrado com sucesso", Toast.LENGTH_SHORT).show()
+            finish()
+        } else {
             Toast.makeText(this, "Preencha todos os campos corretamente", Toast.LENGTH_SHORT).show()
-            return
         }
-
-        val produto = Produto(
-            nome = nomeProduto,
-            quantidade = quantidadeProduto,
-            preco = precoProduto
-        )
-
-        produtoViewModel.cadastrarProduto(produto)
-
-        Toast.makeText(this, "Produto cadastrado com sucesso", Toast.LENGTH_SHORT).show()
-
-        limparCampos()
-
-        startActivity(i)
-        finish()
-
     }
+
 
     private fun limparCampos() {
         binding.editNomeProduto.text?.clear()

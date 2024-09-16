@@ -45,7 +45,10 @@ dependencies {
 
     //CircleImageView dependência
     implementation("de.hdodenhof:circleimageview:3.1.0")
-    
+
+    //Lifecycle ViewModel KTX dependência
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0")
+
     //Android studio dependências
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
