@@ -6,7 +6,7 @@ O projeto **IntelliStocks** não só revolucionará o gerenciamento de inventár
 
 Recursos como **alertas automatizados via email** e um **painel de controle centralizado** proporcionarão ainda mais controle e organização. Dessa forma, o **IntelliStocks** se tornará uma ferramenta essencial tanto para a **gestão operacional** quanto para o **planejamento estratégico** das empresas.
 
-### SPRINT 3
+### SPRINT 4
 #### Equipe:
 - **Gustavo Monte (RM 551601)**
 - **Igor Luiz (RM 99809)**
